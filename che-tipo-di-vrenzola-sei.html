@@ -159,6 +159,14 @@ const TIPI = {
     frase:"<b>Frase tipica:</b> «Uagliù, i' nun magno 'a pizza stasera, aggio 'e macros già finite — però v'accompagno eh, e vi guardo mangiare in silenzio.»",
     arma:"<b>Arma segreta:</b> 'o shaker proteico sempre in mano come un'arma e la foto del prima/dopo postata ogni volta che qualcuno osa mangiare un cornetto davanti a lei."
   }
+  ,provinciale:{
+    emoji:"🚌",
+    title:"LA VRENZOLA 'E AVELLINO (MA SI CREDE 'E NAPULE)",
+    desc:"Nata ad Aversa, cresciuta ad Avellino o residente a Caserta, ma nella sua testa, nel suo cuore e soprattutto nel suo Instagram bio: napoletana al 100%. Dice \"noi napoletani\" con una naturalezza che fa accapponare la pelle ai veri napoletani. Ha \"Napoli 💙\" in bio ma l'indirizzo sulla carta d'identità piange. Conosce ogni pizzeria di Napoli ma non sa come si chiama la piazza principale del suo paese. Usa parole in napoletano a caso, spesso sbagliate, sempre esagerate — come se stesse recitando un copione studiato male. Quando la squadra del Napoli perde piange come se le avessero portato via un parente, anche se non sa dove si trova il Maradona. Si offende a morte se qualcuno la chiama provinciale e risponde \"ma io SO' napulitana\" con una convinzione che sposta le montagne ma non sposta la realtà anagrafica.",
+    habitat:"<b>Habitat:</b> il pullman Avellino-Napoli ogni weekend, il lungomare di Napoli ogni volta che può e il gruppo WhatsApp Amici di Napule (tutti di Caserta).",
+    frase:"<b>Frase tipica:</b> «Io so' napulitana nell'anima, 'o saccio io chi songo — la carta d'identità è solo burocrazia.»",
+    arma:"<b>Arma segreta:</b> il profilo Instagram con geotag sempre su Napoli, anche quando è fisicamente ad Avellino a mangiare 'e castagne."
+  }
 };
 
 const DOMANDE = [
@@ -170,7 +178,8 @@ const DOMANDE = [
      {t:"«Rimme ca sto faticann, te manno 'o catalogo»",k:"imprenditrice"},
      {t:"«Chi è? Eh i' 'o saccio già tutto, parla»",k:"regina"},
      {t:"Sottovoce, sospirando: «che imbarazzo la gente che parla forte»",k:"antonella"},
-     {t:"«Aspetta ca stongo a cuntà 'e ripetizioni», poi rispunno",k:"fitness"}
+     {t:"«Aspetta ca stongo a cuntà 'e ripetizioni», poi rispunno",k:"fitness"},
+     {t:"Rispondo urlando «pront'!» cu l'accento napulitano forzato, pure se chiama mamma",k:"provinciale"}
    ]},
   {q:"Outfit per andare a comprare il pane:",
    a:[
@@ -180,7 +189,8 @@ const DOMANDE = [
      {t:"Pigiama, tanto comando io e nessuno dice niente",k:"regina"},
      {t:"Quello che vendo, così faccio pubblicità ambulante",k:"imprenditrice"},
      {t:"Total beige minimal e tote bag: «io non mi vesto appariscente»",k:"antonella"},
-     {t:"Leggings e scarpe 'e palestra, pure pe' 'o pane",k:"fitness"}
+     {t:"Leggings e scarpe 'e palestra, pure pe' 'o pane",k:"fitness"},
+     {t:"Qualcosa cu 'o stemma di Napoli sopra, ogni giorno, senza eccezioni",k:"provinciale"}
    ]},
   {q:"La tua canzone dell'anima è:",
    a:[
@@ -190,7 +200,8 @@ const DOMANDE = [
      {t:"L'audio della story col mio balletto",k:"tronista"},
      {t:"Il jingle del mio negozietto online",k:"imprenditrice"},
      {t:"Un podcast di crescita personale: «io non ascolto quella roba»",k:"antonella"},
-     {t:"'A playlist Training Mode a 140 BPM, sempe 'a stessa",k:"fitness"}
+     {t:"'A playlist Training Mode a 140 BPM, sempe 'a stessa",k:"fitness"},
+     {t:"'O Surdato 'nnammurato — cantata cu l'accento sbagliato ma cu tanta passione",k:"provinciale"}
    ]},
   {q:"Qualcuno parla male di te. Reazione?",
    a:[
@@ -200,7 +211,8 @@ const DOMANDE = [
      {t:"Lo so già da prima di lei, ho le mie fonti ovunque",k:"regina"},
      {t:"Lo blocco e gli tolgo lo sconto fedeltà a vita",k:"imprenditrice"},
      {t:"«Io non mi abbasso al loro livello»... poi torna l'accento d' 'o paese",k:"antonella"},
-     {t:"Vaco 'n palestra a sfogà e torno cu 'a foto d' 'e progressi",k:"fitness"}
+     {t:"Vaco 'n palestra a sfogà e torno cu 'a foto d' 'e progressi",k:"fitness"},
+     {t:"Mi offendo come se avessero insultato Napoli — pure se vengo da Avellino",k:"provinciale"}
    ]},
   {q:"Il tuo accessorio irrinunciabile:",
    a:[
@@ -210,7 +222,8 @@ const DOMANDE = [
      {t:"Il rosario d'oro della nonna al collo",k:"neomelodica"},
      {t:"Il telefono con 3 power bank per non perdere una vendita",k:"imprenditrice"},
      {t:"Gli occhiali da vista finti, per sembrare intellettuale",k:"antonella"},
-     {t:"'O shaker proteico agganciato alla borsa, ovunque vaje",k:"fitness"}
+     {t:"'O shaker proteico agganciato alla borsa, ovunque vaje",k:"fitness"},
+     {t:"La sciarpa del Napoli — estate, inverno, matrimoni, funerali",k:"provinciale"}
    ]},
   {q:"Come passi il sabato sera ideale?",
    a:[
@@ -220,7 +233,8 @@ const DOMANDE = [
      {t:"Karaoke neomelodico fino alle 4 di mattina",k:"neomelodica"},
      {t:"Sul balcone con la comare a spettegolare",k:"classica"},
      {t:"Aperitivo di qualità a spiegare che lei è diversa dalle altre",k:"antonella"},
-     {t:"Meal prep, letto alle 22 ca dimane alleno alle 6 'e matina",k:"fitness"}
+     {t:"Meal prep, letto alle 22 ca dimane alleno alle 6 'e matina",k:"fitness"},
+     {t:"A Napoli. Sempre a Napoli. Anche se ci vuole un'ora di pullman",k:"provinciale"}
    ]},
   {q:"Il tuo sogno nel cassetto:",
    a:[
@@ -230,7 +244,8 @@ const DOMANDE = [
      {t:"Essere riconosciuta regina assoluta del quartiere per legge",k:"regina"},
      {t:"La borsa firmata VERA, finalmente",k:"tamarra"},
      {t:"Trasferirmi a Milano e scordare 'o paese (ma torno ogni weekend)",k:"antonella"},
-     {t:"Aprì 'a mia palestra e diventà personal trainer certificata",k:"fitness"}
+     {t:"Aprì 'a mia palestra e diventà personal trainer certificata",k:"fitness"},
+     {t:"Trasferirmi a Napoli e cancellare Avellino dalla mia biografia per sempre",k:"provinciale"}
    ]},
   {q:"Frase che diresti a tavola dai parenti:",
    a:[
@@ -240,12 +255,13 @@ const DOMANDE = [
      {t:"«Vulite pruvà l'integratore detox mio? Ve lo mando domani»",k:"imprenditrice"},
      {t:"«Stu sugo è 'a fine r' 'o munno» cu 'a lacrimella",k:"neomelodica"},
      {t:"«Voi non capite, in città mica si fa così» (con la puzza sotto al naso)",k:"antonella"},
-     {t:"«Avite 'o petto 'e pullo scundito? Sto facenno cutting»",k:"fitness"}
+     {t:"«Avite 'o petto 'e pullo scundito? Sto facenno cutting»",k:"fitness"},
+     {t:"«A Napoli si fa diverso» — detto da chi non ci abita",k:"provinciale"}
    ]}
 ];
 
 let idx=0;
-const punti={classica:0,tronista:0,neomelodica:0,imprenditrice:0,regina:0,tamarra:0,antonella:0,fitness:0};
+const punti={classica:0,tronista:0,neomelodica:0,imprenditrice:0,regina:0,tamarra:0,antonella:0,fitness:0,provinciale:0};
 
 function start(){
   document.getElementById('intro').classList.add('hidden');
