@@ -83,6 +83,40 @@
   .bk-pct{color:var(--giallo);font-weight:bold;font-size:.95rem;flex-shrink:0;}
   .bk-track{height:12px;background:rgba(255,255,255,.12);border-radius:8px;overflow:hidden;border:1px solid rgba(255,212,0,.25);}
   .bk-fill{height:100%;width:0;background:linear-gradient(90deg,var(--rosa),var(--giallo));border-radius:8px;transition:width .6s ease;}
+  .bk-row{cursor:pointer;padding:6px 8px;border-radius:10px;transition:background .15s;}
+  .bk-row:hover{background:rgba(255,46,136,.15);}
+  .bk-row:hover .bk-name{color:var(--ciano);}
+  .bk-hint{font-size:.72rem;opacity:.5;margin-top:3px;letter-spacing:.5px;}
+  /* MODAL */
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(0,0,0,.75);
+    display:flex;align-items:center;justify-content:center;
+    z-index:100;padding:16px;
+    animation:fadeIn .18s ease;
+  }
+  .modal-overlay.hidden{display:none;}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  .modal-box{
+    background:linear-gradient(160deg,#2a0040,#1a0022);
+    border:3px solid var(--giallo);border-radius:22px;
+    padding:26px 22px;max-width:520px;width:100%;
+    box-shadow:0 0 50px rgba(255,46,136,.7);
+    animation:popIn .2s ease;
+    max-height:85vh;overflow-y:auto;
+  }
+  @keyframes popIn{from{transform:scale(.92);opacity:0}to{transform:scale(1);opacity:1}}
+  .modal-emoji{font-size:4rem;text-align:center;display:block;margin-bottom:6px;}
+  .modal-title{font-size:1.6rem;text-align:center;color:var(--giallo);margin-bottom:12px;text-shadow:0 0 10px var(--rosa);}
+  .modal-desc{font-size:1rem;line-height:1.55;margin-bottom:12px;opacity:.95;}
+  .modal-box .result-box{margin-bottom:8px;}
+  .modal-close{
+    display:block;width:100%;margin-top:16px;padding:12px;
+    font-size:.95rem;font-weight:bold;cursor:pointer;
+    border:2px solid var(--rosa);border-radius:12px;
+    background:transparent;color:var(--rosa);
+    transition:all .12s;
+  }
+  .modal-close:hover{background:var(--rosa);color:#fff;}
 </style>
 </head>
 <body>
@@ -119,6 +153,19 @@
     </div>
 
     <div class="footer">Quiz demenziale per ridere — gli stereotipi sono affettuosi 💖</div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div id="modal" class="modal-overlay hidden" onclick="closeModal(event)">
+  <div class="modal-box">
+    <span class="modal-emoji" id="mEmoji"></span>
+    <div class="modal-title" id="mTitle"></div>
+    <div class="modal-desc" id="mDesc"></div>
+    <div class="result-box" id="mHabitat"></div>
+    <div class="result-box" id="mFrase"></div>
+    <div class="result-box" id="mArma"></div>
+    <button class="modal-close" onclick="document.getElementById('modal').classList.add('hidden')">✕ Chiudi</button>
   </div>
 </div>
 
@@ -352,12 +399,13 @@ function buildBreakdown(){
   panel.innerHTML=sorted.map(([k,v])=>{
     const pct=total>0?Math.round(v/total*100):0;
     const t=TIPI[k];
-    return `<div class="bk-row">
+    return `<div class="bk-row" onclick="openModal('${k}')">
       <div class="bk-label">
         <span class="bk-name">${t.emoji} ${t.title}</span>
         <span class="bk-pct">${pct}%</span>
       </div>
       <div class="bk-track"><div class="bk-fill" data-pct="${pct}"></div></div>
+      <div class="bk-hint">toccame p' 'e dettagli 👆</div>
     </div>`;
   }).join('');
   setTimeout(()=>{
@@ -365,6 +413,22 @@ function buildBreakdown(){
       el.style.width=el.dataset.pct+'%';
     });
   },50);
+}
+
+function openModal(k){
+  const t=TIPI[k];
+  document.getElementById('mEmoji').textContent=t.emoji;
+  document.getElementById('mTitle').textContent=t.title;
+  document.getElementById('mDesc').textContent=t.desc;
+  document.getElementById('mHabitat').innerHTML=t.habitat;
+  document.getElementById('mFrase').innerHTML=t.frase;
+  document.getElementById('mArma').innerHTML=t.arma;
+  document.getElementById('modal').classList.remove('hidden');
+}
+
+function closeModal(e){
+  if(e.target===document.getElementById('modal'))
+    document.getElementById('modal').classList.add('hidden');
 }
 </script>
 </body>
