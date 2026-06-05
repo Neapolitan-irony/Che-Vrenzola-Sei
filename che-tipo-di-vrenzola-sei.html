@@ -5,141 +5,69 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Che tipo di vrenzola sei? 💅🔥</title>
 <style>
-  :root{
-    --rosa:#ff2e88;
-    --viola:#7b1fa2;
-    --giallo:#ffd400;
-    --ciano:#00e5ff;
-    --nero:#1a0022;
-  }
+  :root{--rosa:#ff2e88;--viola:#7b1fa2;--giallo:#ffd400;--ciano:#00e5ff;--nero:#1a0022;}
   *{box-sizing:border-box;margin:0;padding:0;font-family:'Trebuchet MS','Segoe UI',sans-serif;}
-  body{
-    min-height:100vh;
-    background:linear-gradient(135deg,#ff2e88 0%,#7b1fa2 50%,#1a0022 100%);
-    background-attachment:fixed;
-    color:#fff;
-    display:flex;
-    align-items:flex-start;
-    justify-content:center;
-    padding:24px 14px 60px;
-  }
+  body{min-height:100vh;background:linear-gradient(135deg,#ff2e88 0%,#7b1fa2 50%,#1a0022 100%);background-attachment:fixed;color:#fff;display:flex;align-items:flex-start;justify-content:center;padding:24px 14px 60px;}
   .wrap{width:100%;max-width:620px;}
-  .card{
-    background:rgba(26,0,34,.78);
-    border:3px solid var(--giallo);
-    border-radius:22px;
-    padding:26px 22px;
-    box-shadow:0 0 40px rgba(255,46,136,.6);
-    backdrop-filter:blur(4px);
-  }
-  h1{
-    font-size:2.1rem;line-height:1.1;text-align:center;
-    text-shadow:0 0 14px var(--rosa);
-    background:linear-gradient(90deg,var(--giallo),var(--ciano),var(--rosa));
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-  }
+  .card{background:rgba(26,0,34,.78);border:3px solid var(--giallo);border-radius:22px;padding:26px 22px;box-shadow:0 0 40px rgba(255,46,136,.6);backdrop-filter:blur(4px);}
+  h1{font-size:2.1rem;line-height:1.1;text-align:center;text-shadow:0 0 14px var(--rosa);background:linear-gradient(90deg,var(--giallo),var(--ciano),var(--rosa));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
   .sub{text-align:center;margin:12px 0 4px;font-size:1.05rem;opacity:.95;}
   .emoji{font-size:2.6rem;text-align:center;display:block;margin-bottom:6px;}
-  .btn{
-    display:block;width:100%;margin-top:22px;padding:16px;
-    font-size:1.15rem;font-weight:bold;cursor:pointer;
-    border:none;border-radius:14px;color:var(--nero);
-    background:linear-gradient(90deg,var(--giallo),var(--ciano));
-    text-transform:uppercase;letter-spacing:1px;
-    transition:transform .12s, box-shadow .12s;
-  }
+  .btn{display:block;width:100%;margin-top:22px;padding:16px;font-size:1.15rem;font-weight:bold;cursor:pointer;border:none;border-radius:14px;color:var(--nero);background:linear-gradient(90deg,var(--giallo),var(--ciano));text-transform:uppercase;letter-spacing:1px;transition:transform .12s, box-shadow .12s;}
   .btn:hover{transform:scale(1.03);box-shadow:0 0 22px var(--ciano);}
   .progress{height:14px;background:rgba(255,255,255,.15);border-radius:10px;overflow:hidden;margin-bottom:18px;border:1px solid var(--giallo);}
   .progress>div{height:100%;width:0;background:linear-gradient(90deg,var(--rosa),var(--giallo));transition:width .3s;}
   .qnum{font-size:.85rem;letter-spacing:2px;opacity:.8;text-transform:uppercase;margin-bottom:6px;}
   .question{font-size:1.4rem;font-weight:bold;margin-bottom:18px;line-height:1.25;}
-  .opt{
-    display:block;width:100%;text-align:left;margin-bottom:12px;padding:14px 16px;
-    font-size:1.02rem;cursor:pointer;color:#fff;
-    background:rgba(255,255,255,.08);
-    border:2px solid rgba(255,212,0,.5);border-radius:14px;
-    transition:all .12s;
-  }
+  .opt{display:block;width:100%;text-align:left;margin-bottom:12px;padding:14px 16px;font-size:1.02rem;cursor:pointer;color:#fff;background:rgba(255,255,255,.08);border:2px solid rgba(255,212,0,.5);border-radius:14px;transition:all .12s;}
   .opt:hover{background:var(--rosa);border-color:#fff;transform:translateX(4px);}
   .result-emoji{font-size:5rem;text-align:center;display:block;}
   .result-title{font-size:2rem;text-align:center;color:var(--giallo);margin:6px 0 14px;text-shadow:0 0 12px var(--rosa);}
-  .result-desc{font-size:1.08rem;line-height:1.5;margin-bottom:14px;}
+  .result-desc{font-size:1.08rem;line-height:1.6;margin-bottom:14px;}
   .result-box{background:rgba(0,0,0,.3);border-left:4px solid var(--ciano);padding:12px 14px;border-radius:8px;margin-bottom:10px;font-size:.98rem;}
   .result-box b{color:var(--ciano);}
   .hidden{display:none;}
   .footer{text-align:center;margin-top:18px;font-size:.8rem;opacity:.6;}
-  .breakdown-toggle{
-    display:block;width:100%;margin-top:12px;padding:13px;
-    font-size:1rem;font-weight:bold;cursor:pointer;
-    border:2px solid var(--viola);border-radius:14px;color:#fff;
-    background:rgba(123,31,162,.35);letter-spacing:.5px;
-    transition:all .12s;
-  }
+  .breakdown-toggle{display:block;width:100%;margin-top:12px;padding:13px;font-size:1rem;font-weight:bold;cursor:pointer;border:2px solid var(--viola);border-radius:14px;color:#fff;background:rgba(123,31,162,.35);letter-spacing:.5px;transition:all .12s;}
   .breakdown-toggle:hover{background:var(--viola);border-color:var(--ciano);}
   .breakdown-panel{margin-top:18px;}
-  .bk-row{margin-bottom:14px;}
+  .bk-row{cursor:pointer;padding:6px 8px;border-radius:10px;transition:background .15s;margin-bottom:14px;}
+  .bk-row:hover{background:rgba(255,46,136,.15);}
+  .bk-row:hover .bk-name{color:var(--ciano);}
   .bk-label{font-size:.9rem;margin-bottom:5px;display:flex;justify-content:space-between;align-items:center;gap:8px;}
   .bk-name{opacity:.9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
   .bk-pct{color:var(--giallo);font-weight:bold;font-size:.95rem;flex-shrink:0;}
   .bk-track{height:12px;background:rgba(255,255,255,.12);border-radius:8px;overflow:hidden;border:1px solid rgba(255,212,0,.25);}
   .bk-fill{height:100%;width:0;background:linear-gradient(90deg,var(--rosa),var(--giallo));border-radius:8px;transition:width .6s ease;}
-  .bk-row{cursor:pointer;padding:6px 8px;border-radius:10px;transition:background .15s;}
-  .bk-row:hover{background:rgba(255,46,136,.15);}
-  .bk-row:hover .bk-name{color:var(--ciano);}
   .bk-hint{font-size:.72rem;opacity:.5;margin-top:3px;letter-spacing:.5px;}
-  /* MODAL */
-  .modal-overlay{
-    position:fixed;inset:0;background:rgba(0,0,0,.75);
-    display:flex;align-items:center;justify-content:center;
-    z-index:100;padding:16px;
-    animation:fadeIn .18s ease;
-  }
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);display:flex;align-items:center;justify-content:center;z-index:100;padding:16px;animation:fadeIn .18s ease;}
   .modal-overlay.hidden{display:none;}
   @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-  .modal-box{
-    background:linear-gradient(160deg,#2a0040,#1a0022);
-    border:3px solid var(--giallo);border-radius:22px;
-    padding:26px 22px;max-width:520px;width:100%;
-    box-shadow:0 0 50px rgba(255,46,136,.7);
-    animation:popIn .2s ease;
-    max-height:85vh;overflow-y:auto;
-  }
+  .modal-box{background:linear-gradient(160deg,#2a0040,#1a0022);border:3px solid var(--giallo);border-radius:22px;padding:26px 22px;max-width:520px;width:100%;box-shadow:0 0 50px rgba(255,46,136,.7);animation:popIn .2s ease;max-height:85vh;overflow-y:auto;}
   @keyframes popIn{from{transform:scale(.92);opacity:0}to{transform:scale(1);opacity:1}}
   .modal-emoji{font-size:4rem;text-align:center;display:block;margin-bottom:6px;}
   .modal-title{font-size:1.6rem;text-align:center;color:var(--giallo);margin-bottom:12px;text-shadow:0 0 10px var(--rosa);}
-  .modal-desc{font-size:1rem;line-height:1.55;margin-bottom:12px;opacity:.95;}
+  .modal-desc{font-size:1rem;line-height:1.6;margin-bottom:12px;opacity:.95;}
   .modal-box .result-box{margin-bottom:8px;}
-  .modal-close{
-    display:block;width:100%;margin-top:16px;padding:12px;
-    font-size:.95rem;font-weight:bold;cursor:pointer;
-    border:2px solid var(--rosa);border-radius:12px;
-    background:transparent;color:var(--rosa);
-    transition:all .12s;
-  }
+  .modal-close{display:block;width:100%;margin-top:16px;padding:12px;font-size:.95rem;font-weight:bold;cursor:pointer;border:2px solid var(--rosa);border-radius:12px;background:transparent;color:var(--rosa);transition:all .12s;}
   .modal-close:hover{background:var(--rosa);color:#fff;}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="card">
-
-    <!-- INTRO -->
     <div id="intro">
       <span class="emoji">💅🔥👑</span>
       <h1>CHE TIPO DI VRENZOLA SEI?</h1>
       <p class="sub">8 domande. Zero pietà. La verità su di te sta per uscire allo scoperto, soreee. 💋</p>
-      <button class="btn" onclick="start()">INIZIAMO STO BORDELLO ➜</button>
+      <button class="btn" onclick="start()">INIZIAMO STO BORDELLO ➤</button>
     </div>
-
-    <!-- QUIZ -->
     <div id="quiz" class="hidden">
       <div class="progress"><div id="bar"></div></div>
       <div class="qnum" id="qnum"></div>
       <div class="question" id="qtext"></div>
       <div id="opts"></div>
     </div>
-
-    <!-- RESULT -->
     <div id="result" class="hidden">
       <span class="result-emoji" id="rEmoji"></span>
       <div class="result-title" id="rTitle"></div>
@@ -147,16 +75,13 @@
       <div class="result-box" id="rHabitat"></div>
       <div class="result-box" id="rFrase"></div>
       <div class="result-box" id="rArma"></div>
-      <button class="breakdown-toggle" onclick="toggleBreakdown(this)">🔍 Vide quant'è di ogni tipo in te ↓</button>
+      <button class="breakdown-toggle" onclick="toggleBreakdown(this)">🔍 Vide quant’è di ogni tipo in te ↓</button>
       <div id="breakdown" class="breakdown-panel hidden"></div>
       <button class="btn" onclick="location.reload()" style="margin-top:16px;">RIFALLO 🔁</button>
     </div>
-
     <div class="footer">Quiz demenziale per ridere — gli stereotipi sono affettuosi 💖</div>
   </div>
 </div>
-
-<!-- MODAL -->
 <div id="modal" class="modal-overlay hidden" onclick="closeModal(event)">
   <div class="modal-box">
     <span class="modal-emoji" id="mEmoji"></span>
@@ -168,78 +93,74 @@
     <button class="modal-close" onclick="document.getElementById('modal').classList.add('hidden')">✕ Chiudi</button>
   </div>
 </div>
-
 <script>
-/* ===== I 6 TIPI ===== */
 const TIPI = {
   classica:{
     emoji:"🩴",
     title:"LA VRENZOLA CLASSICA D.O.C.",
-    desc:"Tuta acetata, ciabatte col calzino, capelli tirati a uovo e telefono SEMPRE in mano a volume massimo in vivavoce. Sei l'originale, la matrice, il prototipo da cui tutte le altre hanno copiato. Pura, autentica, intramontabile.",
-    habitat:"<b>Habitat:</b> il balcone del rione, urlando ai figli che giocano in strada.",
-    frase:"<b>Frase tipica:</b> «Madò, ma stammo sempe a parlà? Ma fatte 'e fatte tuoje!»",
-    arma:"<b>Arma segreta:</b> la ciabatta tomahawk, precisione chirurgica a 15 metri."
+    desc:"Tuta acetata color ghiaccio anni Novanta, ciabatte Scholl col calzino corto bianco tirato su fino al polpaccio, capelli tirati a uovo talmente forti che le sopracciglia sono diventate un optional permanente. Il telefono è sempre in vivavoce — non per comodità, ma perché il quartiere ha diritto di sapere tutto in tempo reale. Urla ai figli dal balcone con una precisione balistica che la NATO ci farebbe un corso. Non ha mai mandato un messaggio scritto in vita sua: o chiama, o non esiste. Gestisce la famiglia come un generale dell'esercito con le ciabatte al posto degli stivali e la scopa al posto del fucile. Il frigorifero è sempre pieno da scoppiare — tre tipi di ragù sovrapposti, sedici mozzarelle e il salame nascosto dietro la bottiglia dell'acqua — ma guai a toccare il ripiano di sotto che è di Totò. Conosce il nome, il cognome, il medico di base, i debiti e i peccati di ogni anima del palazzo. La sua opinione non te la chiede nessuno, ma te la dà lo stesso — e ha sempre ragione, anche quando ha torto marcio. Patrimonio culturale dell'umanità: non protetta dall'UNESCO solo perché l'UNESCO ha paura di chiamarla.",
+    habitat:"<b>Habitat:</b> 'o balcone d' 'o rione, da cui dirige traffico, litigi e matrimoni altrui.",
+    frase:"<b>Frase tipica:</b> «Madò, ma stammo sempe a parlà? Fatte 'e fatte tuoje! — comunque chella s'è messa cu chillo r' 'o terzo piano.»",
+    arma:"<b>Arma segreta:</b> la ciabatta tomahawk — precisione chirurgica a 15 metri, silenziosa come un drone, letale come un rimprovero della mamma."
   },
   tronista:{
     emoji:"🤳",
     title:"LA VRENZOLA INFLUENCER WANNABE",
-    desc:"Vivi per le storie, il filtro e il tuo migliore amico e hai piu ritocchini che follower veri. Labbra al silicone, ciglia da spazzolone e una posa col bacino studiata in ogni foto. La vita e un set, e tu sei la regina indiscussa del 'link in bio'.",
-    habitat:"<b>Habitat:</b> il bagno con la luce buona e lo specchio del centro commerciale.",
-    frase:"<b>Frase tipica:</b> «Uagliù, oggi so' struccata, acqua e sapone» (cu 4 chile 'e trucco).",
-    arma:"<b>Arma segreta:</b> il filtro che ti toglie 20 anni e 3 menti."
+    desc:"Ha più filtri che emozioni reali e più ritocchi che ricordi d'infanzia. Le labbra al silicone sono ormai talmente gonfie che quando piove si mettono al riparo da sole. Le ciglia finte sono classificate come ostacolo aereo dalla Protezione Civile. Si alza alle sei del mattino non per lavorare, ma per fare la storia «buongiornoooo soreee» con la luce giusta del bagno — che ha studiato per tre settimane col goniometro. Ha una lista di collaborazioni con brand che non esistono e sponsorizza integratori che non ha mai aperto, borse noleggiate per il weekend e resort dove ha soggiornato due notti gratis in cambio di dieci storie e una menzione. Ogni pasto è fotografato, filtrato e postato con la caption «mangio sano ma ogni tanto mi concedo» — quello che si concede è un'intera pizza fritta alle due di notte davanti al frigo aperto. Dice «acqua e sapone» col fondotinta Stanford 14, il correttore Huda Beauty, quattro strati di mascara e una spugnetta che costa più di un affitto al Vomero. Il pianto strategico su Instagram le ha portato 40.000 visualizzazioni, tre proposte di matrimonio nei DM e un accordo con una marca di fazzoletti. Il fidanzato è ufficialmente il suo fotografo, non appare mai in frame e ha sviluppato una depressione silenziosa.",
+    habitat:"<b>Habitat:</b> 'o bagno cu 'a luce buona, 'o specchio d' 'o centro commerciale e qualsiasi posto con più di 3 bar di segnale.",
+    frase:"<b>Frase tipica:</b> «Uagliù, oggi so' struccata, acqua e sapone» — cu quattro chili di trucco e il ring light puntato in faccia.",
+    arma:"<b>Arma segreta:</b> il filtro che le toglie 20 anni, 3 menti e qualsiasi traccia di autenticità rimasta."
   },
   neomelodica:{
     emoji:"🎤",
     title:"LA VRENZOLA NEOMELODICA",
-    desc:"La tua vita e una canzone d'amore strappalacrime. Auto con i finestrini abbassati e l'autotune a palla, lacrime facili e drammi amorosi degni di una telenovela. Ami con tutto il cuore, soffri con tutto il fegato e canti con tutta la gola.",
-    habitat:"<b>Habitat:</b> matrimoni, comunioni e la macchina del fidanzato.",
-    frase:"<b>Frase tipica:</b> «Tu si' 'a vita mia... ma si me traisce, t'accido!»",
-    arma:"<b>Arma segreta:</b> la dedica a sorpresa che fa piangere tutto il quartiere."
+    desc:"La sua vita è una telenovela napoletana con la colonna sonora di Tony Colombo e i sottotitoli in lacrime. L'ha tatuato sul polso, lui l'ha tatuata sul collo — nessuno dei due ha ancora capito che è per sempre. Ama con una violenza emotiva che spaventa i geologi. Quando litiga col fidanzato mette su Liberato a tutto volume e piange sul balcone affinché il vicinato possa testimoniare il dramma in diretta. Ha dedicato canzoni, scritto messaggi di sette pagine alle 3 di notte e ordinato una torta con scritto «ti perdono ma nun fa' 'o guappo» al bar sotto casa, fatta recapitare in motorino con urgenza assoluta. Il romanticismo estremo convive serenamente con una capacità di minacce affettuose che fa alzare un sopracciglio anche alla questura. In macchina: finestrini abbassati, autotune a palla, mano fuori dal finestrino a tempo, lacrimuccia nell'occhio sinistro. Il matrimonio dei sogni prevede duecento persone minimo, carrozza con cavalli bianchi, dress code romantico imposto agli invitati e il cantante neomelodico che fa scoppiare in pianto la suocera durante il primo ballo — se la suocera non piange, il matrimonio non è riuscito e si rifà.",
+    habitat:"<b>Habitat:</b> 'a macchina d' 'o fidanzato, i matrimoni d' 'o rione e qualsiasi posto dove si può piangere con stile.",
+    frase:"<b>Frase tipica:</b> «Tu si' 'a vita mia, 'o sole mio, 'o core mio... ma si me traisce, t'accido e poi me ne vado a Barcellona.»",
+    arma:"<b>Arma segreta:</b> la dedica con il cantante neomelodico sotto casa — fa piangere tutto il quartiere, sveglia i bambini e fa abbaiare i cani del palazzo."
   },
   imprenditrice:{
     emoji:"💸",
     title:"LA VRENZOLA IMPRENDITRICE",
-    desc:"Unghie da 4 cm ma le dita corrono sul telefono a vendere di tutto: ciglia, smalti semipermanenti, integratori detox e profumi 'tipo' quelli di marca. Sei una macchina da soldi col grembiule glitterato. Networking e il tuo secondo nome.",
-    habitat:"<b>Habitat:</b> il salone-garage di casa, trasformato in impero.",
-    frase:"<b>Frase tipica:</b> «Ammò, scríveme 'mprivato ca te faccio 'o prezzo, amì!»",
-    arma:"<b>Arma segreta:</b> il catalogo WhatsApp con 4.000 contatti e zero scrupoli."
+    desc:"Con unghie acriliche da 5 cm — che sembrano i coltelli di Wolverine ma in nude glitter — gestisce un impero commerciale da 4.000 contatti WhatsApp e zero partita IVA. Vende tutto: ciglia, smalti semipermanenti, profumi «ispirazione Chanel» il cui odore principale è acetone con note di ambra sintetica, integratori che «fanno miracoli certificati dalla scienza» e candele che «attivano l'energia positiva della casa e richiamano l'abbondanza». Ha trasformato il garage in una spa, il basso della suocera in un magazzino e la chat di famiglia in un catalogo permanente da cui nessuno riesce a uscire. Non esiste conversazione umana — compleanno, lutto, nascita, divorzio — che non finisca con «ti mando il link, amì, fa bene anche per quello». Ha un regime fiscale che lei chiama «artigianato creativo» e che il commercialista chiama «problema tuo, io mi dimetto». Ogni settimana lancia un nuovo prodotto con una diretta Instagram di due ore davanti a un ring light da 40 euro, parlando a raffica come se stesse svuotando un caricatore sopra il pubblico. Il sogno è aprire un centro estetico, una palestra, un ristorante e un B&B — possibilmente tutti nello stesso basso di 40 metri quadri. Founder, CEO, magazziniera, social media manager e cassiera: tutto da sola, cu 'e cchjù belle unghie d' 'o rione.",
+    habitat:"<b>Habitat:</b> 'o garage-salone trasformato in empire, 'a diretta Instagram delle 21:00 e la fila del corriere ogni mattina alle 8.",
+    frase:"<b>Frase tipica:</b> «Ammò, scriveme 'mprivato ca te faccio 'o prezzo speciale — ma solo pe' te, amì, nun 'o dicere a nisciuno» (lo dice a 4.000 persone).",
+    arma:"<b>Arma segreta:</b> il catalogo WhatsApp aggiornato ogni 48 ore e la capacità sovrumana di trasformare qualsiasi momento della vita altrui in un'opportunità di vendita."
   },
   regina:{
     emoji:"👑",
     title:"LA VRENZOLA REGINA DEL RIONE",
-    desc:"Comandi tu e basta. Conosci i fatti di tutti, controlli il quartiere meglio delle telecamere e nessuno fa un matrimonio senza il tuo permesso. Mamma chioccia coi tuoi, generalessa con gli estranei. La parola 'no' detta a te non esiste.",
-    habitat:"<b>Habitat:</b> la sedia davanti al portone, trono ufficiale.",
-    frase:"<b>Frase tipica:</b> «Cca dinto nun se move 'na foglia ca i' nun voglio.»",
-    arma:"<b>Arma segreta:</b> la rete di comari, informazione capillare 24/7."
+    desc:"Non è nata regina: è diventata tale attraverso decenni di porta-a-porta informativo, debiti di favori accumulati con chirurgica pazienza e una memoria da elefante applicata esclusivamente ai peccati altrui. Sa chi sta con chi, chi ha tradito chi, chi ha i soldi in nero, chi ha lasciato la moglie per la badante e chi ha messo il cartello vendesi senza dirlo ai vicini — una mossa che le ha fatto dichiarare guerra fredda per diciotto mesi. Queste informazioni non le usa — le tiene. Come deterrente nucleare. Nessun matrimonio, battesimo, laurea, trasloco o inaugurazione di balcone del quartiere parte senza il suo esplicito placet. Il portone davanti a casa sua è il suo ufficio operativo, la sedia di plastica il suo trono, la comare del piano di sopra il suo ministro degli esteri e quella del piano di sotto la sua intelligence interna. Se decidi di sfidarla, hai già perso: sa già dove sei stato ieri sera, con chi, perché sei rientrato tardi e cosa hai mangiato. Non urla mai — non ce n'è bisogno. Basta uno sguardo lungo tre secondi e un «ah, e vabbe' allora» sottovoce per gelare il sangue nelle vene. La pace del rione è garantita finché lei è di buon umore. Quando non lo è, le ambulanze lavorano.",
+    habitat:"<b>Habitat:</b> 'a seggia davanti 'o portone — trono, tribunale e centrale operativa tutto in uno, disponibile 365 giorni l'anno.",
+    frase:"<b>Frase tipica:</b> «Cca dinto nun se move 'na foglia ca i' nun voglio. E chillo 'o saccio già da primmo.»",
+    arma:"<b>Arma segreta:</b> la rete di comari — 24 ore su 24, 7 giorni su 7, copertura capillare fino al quarto piano e al piano interrato."
   },
   antonella:{
     emoji:"🎓",
     title:"L'ANTONELLA — LA VRENZOLA NEGAZIONISTA",
-    desc:"Laurea in Medicina (o Ingegneria, o Architettura) presa col massimo dei voti, vieni dalla provincia e fai di TUTTO per non sembrare vrenzola: spritz invece di birra, tote bag al posto della borsa firmata, podcast di crescita personale e «io non sono come le altre». Ma basta un nervoso e ritorna l'accento d' 'o paese, la ciabatta spirituale e il «ma tu nun saje chi songo io». Vrenzola coi titoli di studio... ma sempe vrenzola resta.",
-    habitat:"<b>Habitat:</b> l'aperitivo 'di qualità' in centro, a ricordare a tutti che lei è dottoressa.",
-    frase:"<b>Frase tipica:</b> «Io ci ho la laurea eh, mica sono vrenzola... però chella se l'è proprio cercata.»",
-    arma:"<b>Arma segreta:</b> il titolo di studio sventolato in faccia e l'accento d' 'o paese che torna quando s'arrabbia."
+    desc:"Laurea magistrale con lode, master a Bologna, LinkedIn aggiornato ogni settimana con citazioni di Steve Jobs in italiano storpiato e foto in smart working col Mac aperto su niente di rilevante. Ha fatto di tutto per seppellire la vrenzola interiore sotto strati di crescita personale, oat milk, yoga del lunedì mattina e un abbonamento a MasterClass che non ha mai usato ma che cita spesso nelle conversazioni. Parla di «confini emotivi» e poi telefona alla mamma tre volte al giorno per dirle chi ha incontrato al supermercato e che faccia aveva. Dice «non mi interessa il gossip» e sa già tutto prima che tu apra bocca. Al ristorante ordina sempre il piatto con il nome straniero spiegandolo a tutto il tavolo anche quando è chiaramente pasta al pomodoro con un nome francese sopra. Porta il tote bag «This is not a plastic bag», beve solo vini naturali biodinamici con solfiti bassi e ha un'opinione molto articolata sul pane a lievitazione naturale che non hai chiesto e non vuoi ricevere. Ma basta una chiamata dalla mamma, un ritardo del treno o un semaforo rosso di troppo — e ritorna tutto in 0,3 secondi: l'accento d' 'o paese, il volume da rione, il vocabolario che non si insegna all'università e quella luce negli occhi che dice chiaramente «i' saccio addò abitate, a tutte quante». Vrenzola con la firma digitale. Laureata. Pericolosissima.",
+    habitat:"<b>Habitat:</b> l'aperitivo di qualità in centro dove ricorda a tutti che è dottoressa, e il treno regionale per tornare a casa ogni venerdì sera.",
+    frase:"<b>Frase tipica:</b> «Io ci ho la laurea eh, mica sono vrenzola... però chella se l'è proprio cercata, e i' nun so' comme a loro.»",
+    arma:"<b>Arma segreta:</b> il curriculum vitae sventolato come uno scudo e l'accento d' 'o paese che torna di scatto quando s'arrabbia — trasformazione istantanea, zero preavviso."
   },
   tamarra:{
     emoji:"💎",
     title:"LA VRENZOLA TAMARRA DELUXE",
-    desc:"Oro al collo a chili, borsa 'firmata' (al mercato), animalier dalla testa ai piedi e occhiali da sole anche di notte. Piu e esagerato, piu e bello. Non passi inosservata: ENTRI in una stanza e parte l'eclissi. Glitter, leopardo e zero filtri nella vita reale.",
-    habitat:"<b>Habitat:</b> la discoteca sul lungomare, tavolo riservato.",
-    frase:"<b>Frase tipica:</b> «Chesta è Gucci overo eh, me l'ha ditto chillo r' 'o banco.»",
-    arma:"<b>Arma segreta:</b> l'outfit total animalier visibile dallo spazio."
+    desc:"Entra in una stanza e parte un'eclissi. Oro al collo stratificato come una cipolla gioiellata — almeno quattro collane di misure diverse, due bracciali per polso e orecchini pendenti che le sfiorano le spalle e tintinnano a ogni passo come un carillon da chiesa. La borsa è «firmata» nel senso che ha una firma, anche se quella firma è stata apposta da un signore molto gentile al mercato di Secondigliano che le ha anche fatto lo scontrino e il sacchetto regalo. Animalier dalla testa ai piedi: preferibilmente leopardo, ma in mancanza va bene zebra, tigre, giraffa o qualsiasi animale con le macchie che abbia mai vissuto sulla Terra o che sia estinto. Gli occhiali da sole non si tolgono mai — non al ristorante, non al cinema, non al funerale, non a casa propria, non di notte, non in piscina. Più è esagerato, più è elegante: questo è il suo manifesto estetico, il suo credo, la sua filosofia di vita e la sua religione. Non passa inosservata — questo è il punto. L'invisibilità è una condizione che riguarda esclusivamente gli altri. Il profumo è una nuvola permanente di Versace Gold applicata in quantità che richiede una bonifica ambientale dopo il suo passaggio. Alla discoteca sul lungomare occupa sempre il tavolo riservato, manda avanti prima la borsa e poi se stessa. Rivali: nessuna dichiarata, ma monitora tutte.",
+    habitat:"<b>Habitat:</b> 'a discoteca sul lungomare cu 'o tavolo riservato, 'o mercato delle borse e qualsiasi superficie riflettente disponibile.",
+    frase:"<b>Frase tipica:</b> «Chesta è Gucci overo eh — me l'ha ditto proprio chillo r' 'o banco, e chillo se ne ntenne assaie.»",
+    arma:"<b>Arma segreta:</b> l'outfit total animalier visibile dallo spazio e un'aura di autosufficienza estetica che disorienta e intimorisce i deboli di cuore."
   },
   fitness:{
     emoji:"💪",
     title:"LA VRENZOLA FITNESS",
-    desc:"Sveglia alle 5:30, allenamento, frullato proteico e foto d' 'o bicipite 'ncopp' a Instagram primma ca s'arresbègliano ll'ate. Parle sulo 'e macros, carboidrati e 'progressive overload' e guarde cu pietà a chi se magna 'o cornetto. Leggings sempe addosso, contapassi sempe attivo, anima sempe sul pezzo. 'O jeans nun s'è visto dall'anno passato.",
-    habitat:"<b>Habitat:</b> 'a palestra, 'o banco d' 'e ntegratùri e 'a cucina cu 'e bilancini p' 'e grammi.",
-    frase:"<b>Frase tipica:</b> «Uagliù, i' nun magno 'a pizza, aggio 'e macros già finite. Però v'accompagno eh!»",
-    arma:"<b>Arma segreta:</b> 'o shaker proteico sempe agganciato alla mano e 'a foto r' 'o prima/dopo postata strategicamente."
+    desc:"Si sveglia alle 5:30 non perché debba, ma perché vuole che tu sappia che si sveglia alle 5:30. Prima cosa del mattino: screenshot dell'orologio con commento «rise and grind soreee» sulla story, poi 45 minuti di allenamento filmati da tre angoli diversi, poi frullato proteico con 4 integratori diversi il cui sapore ricorda vagamente il cartone bagnato. Parla solo di macros, DOMS, progressive overload, finestre anaboliche e «deficit calorico» con la stessa urgenza con cui una volta si parlava di figli, matrimoni e mutui. Ha più integratori in casa che cibo vero: creatina, proteine del siero di latte, pre-workout che ti fa vedere i colori, collagene marino, omega 3, magnesio bisglicinato e una roba viola di cui non ricorda il nome ma che «fa benissimo, me l'ha detto la coach». Il frullatore parte alle 6:00 di mattina — i vicini non dormono più dal 2023, ma lei dice che il sonno è per chi non ha obiettivi. Al pranzo di famiglia porta il tupperware col petto di pollo e le zucchine pesate al grammo con la bilancina digitale, guarda il ragù della nonna come se fosse veleno radioattivo e sospira visibilmente ogni volta che qualcuno si alza per il bis. Non mangia la pizza — o meglio, la mangia una volta ogni due mesi con la faccia di chi si sta confessando in chiesa dopo un peccato grave. Il guardaroba è composto al 100% da leggings tecnici, top sportivi e felpe oversize con scritto BEAST MODE, NO DAYS OFF o STRONGER THAN YESTERDAY. Il before/after su Instagram è aggiornato settimanalmente anche nelle settimane in cui non è assolutamente cambiato niente, fotografata da angolazioni studiate apposta.",
+    habitat:"<b>Habitat:</b> 'a palestra alle 6 di mattina, 'o banco d' 'e ntegratùri e 'a cucina cu 'e bilancini digitali p' pesà 'e grammi d' 'o riso.",
+    frase:"<b>Frase tipica:</b> «Uagliù, i' nun magno 'a pizza stasera, aggio 'e macros già finite — però v'accompagno eh, e vi guardo mangiare in silenzio.»",
+    arma:"<b>Arma segreta:</b> 'o shaker proteico sempre in mano come un'arma e la foto del prima/dopo postata strategicamente ogni volta che qualcuno osa mangiare un cornetto davanti a lei."
   }
 };
 
-/* ===== LE DOMANDE =====
-   ogni opzione assegna un punto a un tipo */
 const DOMANDE = [
   {q:"Squilla il telefono in mezzo alla strada. Come rispondi?",
    a:[
@@ -253,70 +174,70 @@ const DOMANDE = [
    ]},
   {q:"Outfit per andare a comprare il pane:",
    a:[
-     {t:"Tuta acetata e ciabatte, un classico",k:"classica"},
+     {t:"Tuta acetata e ciabatte, un classico intramontabile",k:"classica"},
      {t:"Tacco 12 e trucco completo, non si sa mai",k:"tronista"},
      {t:"Animalier dalla testa ai piedi e oro a chili",k:"tamarra"},
      {t:"Pigiama, tanto comando io e nessuno dice niente",k:"regina"},
-     {t:"Quello che vendo, cosi faccio pubblicita",k:"imprenditrice"},
+     {t:"Quello che vendo, così faccio pubblicità ambulante",k:"imprenditrice"},
      {t:"Total beige minimal e tote bag: «io non mi vesto appariscente»",k:"antonella"},
      {t:"Leggings e scarpe 'e palestra, pure pe' 'o pane",k:"fitness"}
    ]},
-  {q:"La tua canzone dell'anima e:",
+  {q:"La tua canzone dell'anima è:",
    a:[
      {t:"Una neomelodica strappalacrime sull'amore",k:"neomelodica"},
-     {t:"Un trap tamarro a palla in macchina",k:"tamarra"},
+     {t:"Un trap tamarro a palla in macchina coi finestrini giù",k:"tamarra"},
      {t:"Qualunque cosa, basta che la sentano i vicini",k:"classica"},
      {t:"L'audio della story col mio balletto",k:"tronista"},
      {t:"Il jingle del mio negozietto online",k:"imprenditrice"},
      {t:"Un podcast di crescita personale: «io non ascolto quella roba»",k:"antonella"},
-     {t:"'A playlist 'Training Mode' a 140 BPM, sempe 'a stessa",k:"fitness"}
+     {t:"'A playlist Training Mode a 140 BPM, sempe 'a stessa",k:"fitness"}
    ]},
   {q:"Qualcuno parla male di te. Reazione?",
    a:[
      {t:"Ciabatta tomahawk e si chiude il discorso",k:"classica"},
      {t:"Story polemica con musica triste e occhiali da sole",k:"tronista"},
-     {t:"Pianto, dramma e canzone dedicata",k:"neomelodica"},
-     {t:"Lo so gia da prima di lei, ho le mie fonti",k:"regina"},
-     {t:"Lo blocco e gli tolgo lo sconto fedelta",k:"imprenditrice"},
+     {t:"Pianto, dramma e canzone dedicata sotto casa sua",k:"neomelodica"},
+     {t:"Lo so già da prima di lei, ho le mie fonti ovunque",k:"regina"},
+     {t:"Lo blocco e gli tolgo lo sconto fedeltà a vita",k:"imprenditrice"},
      {t:"«Io non mi abbasso al loro livello»... poi torna l'accento d' 'o paese",k:"antonella"},
      {t:"Vaco 'n palestra a sfogà e torno cu 'a foto d' 'e progressi",k:"fitness"}
    ]},
   {q:"Il tuo accessorio irrinunciabile:",
    a:[
      {t:"Occhiali da sole leopardati anche di notte",k:"tamarra"},
-     {t:"Le ciglia finte XXL",k:"tronista"},
-     {t:"Le ciabatte da combattimento",k:"classica"},
-     {t:"Il rosario d'oro della nonna",k:"neomelodica"},
-     {t:"Il telefono con 3 power bank per vendere",k:"imprenditrice"},
+     {t:"Le ciglia finte XXL classificate come ostacolo aereo",k:"tronista"},
+     {t:"Le ciabatte da combattimento sempre pronte",k:"classica"},
+     {t:"Il rosario d'oro della nonna al collo",k:"neomelodica"},
+     {t:"Il telefono con 3 power bank per non perdere una vendita",k:"imprenditrice"},
      {t:"Gli occhiali da vista finti, per sembrare intellettuale",k:"antonella"},
      {t:"'O shaker proteico agganciato alla borsa, ovunque vaje",k:"fitness"}
    ]},
   {q:"Come passi il sabato sera ideale?",
    a:[
-     {t:"Discoteca sul lungomare, tavolo e bottiglie",k:"tamarra"},
-     {t:"A fare contenuti per i social",k:"tronista"},
+     {t:"Discoteca sul lungomare, tavolo riservato e bottiglie",k:"tamarra"},
+     {t:"A fare contenuti per i social fino a mezzanotte",k:"tronista"},
      {t:"A casa a controllare i fatti di tutto il palazzo",k:"regina"},
-     {t:"Karaoke neomelodico fino alle 4",k:"neomelodica"},
+     {t:"Karaoke neomelodico fino alle 4 di mattina",k:"neomelodica"},
      {t:"Sul balcone con la comare a spettegolare",k:"classica"},
-     {t:"Aperitivo 'di qualità' a spiegare che lei è diversa dalle altre",k:"antonella"},
+     {t:"Aperitivo di qualità a spiegare che lei è diversa dalle altre",k:"antonella"},
      {t:"Meal prep, letto alle 22 ca dimane alleno alle 6 'e matina",k:"fitness"}
    ]},
   {q:"Il tuo sogno nel cassetto:",
    a:[
      {t:"Diventare famosa sui social, taggata da tutti",k:"tronista"},
-     {t:"Aprire la mia catena di centri estetici",k:"imprenditrice"},
-     {t:"Incidere un disco d'amore",k:"neomelodica"},
-     {t:"Essere riconosciuta regina assoluta del quartiere",k:"regina"},
+     {t:"Aprire la mia catena di centri estetici nel rione",k:"imprenditrice"},
+     {t:"Incidere un disco d'amore che fa piangere il quartiere",k:"neomelodica"},
+     {t:"Essere riconosciuta regina assoluta del quartiere per legge",k:"regina"},
      {t:"La borsa firmata VERA, finalmente",k:"tamarra"},
      {t:"Trasferirmi a Milano e scordare 'o paese (ma torno ogni weekend)",k:"antonella"},
      {t:"Aprì 'a mia palestra e diventà personal trainer certificata",k:"fitness"}
    ]},
   {q:"Frase che diresti a tavola dai parenti:",
    a:[
-     {t:"«Magnate, ca si no v'affennite!» (alluccanno)",k:"regina"},
+     {t:"«Magnate, ca si no v'affennite!» (urlando)",k:"regina"},
      {t:"«Aspettate ca faccio 'a foto r' 'o piatto p' 'a story»",k:"tronista"},
-     {t:"«Stu servizio 'e piatte è firmato eh»",k:"tamarra"},
-     {t:"«Vulite pruvà l'integratore detox mio?»",k:"imprenditrice"},
+     {t:"«Stu servizio 'e piatte è firmato eh, guardatelo bene»",k:"tamarra"},
+     {t:"«Vulite pruvà l'integratore detox mio? Ve lo mando domani»",k:"imprenditrice"},
      {t:"«Stu sugo è 'a fine r' 'o munno» cu 'a lacrimella",k:"neomelodica"},
      {t:"«Voi non capite, in città mica si fa così» (con la puzza sotto al naso)",k:"antonella"},
      {t:"«Avite 'o petto 'e pullo scundito? Sto facenno cutting»",k:"fitness"}
@@ -331,16 +252,11 @@ function start(){
   document.getElementById('quiz').classList.remove('hidden');
   render();
 }
-
 function shuffle(arr){
   const copy=[...arr];
-  for(let i=copy.length-1;i>0;i--){
-    const j=Math.floor(Math.random()*(i+1));
-    [copy[i],copy[j]]=[copy[j],copy[i]];
-  }
+  for(let i=copy.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[copy[i],copy[j]]=[copy[j],copy[i]];}
   return copy;
 }
-
 function render(){
   const d=DOMANDE[idx];
   document.getElementById('bar').style.width=((idx)/DOMANDE.length*100)+'%';
@@ -348,29 +264,22 @@ function render(){
   document.getElementById('qtext').textContent=d.q;
   const box=document.getElementById('opts');
   box.innerHTML='';
-  const opzioni=shuffle(d.a);
-  opzioni.forEach(o=>{
+  shuffle(d.a).forEach(o=>{
     const b=document.createElement('button');
-    b.className='opt';
-    b.textContent=o.t;
-    b.onclick=()=>pick(o.k);
+    b.className='opt';b.textContent=o.t;b.onclick=()=>pick(o.k);
     box.appendChild(b);
   });
 }
-
 function pick(k){
-  punti[k]++;
-  idx++;
-  if(idx<DOMANDE.length){ render(); }
-  else{ showResult(); }
+  punti[k]++;idx++;
+  if(idx<DOMANDE.length){render();}else{showResult();}
 }
-
 function showResult(){
   document.getElementById('quiz').classList.add('hidden');
   document.getElementById('result').classList.remove('hidden');
   let max=Math.max(...Object.values(punti));
-  let vincitori=Object.keys(punti).filter(k=>punti[k]===max);
-  let winner=vincitori[Math.floor(Math.random()*vincitori.length)];
+  let winner=Object.keys(punti).filter(k=>punti[k]===max);
+  winner=winner[Math.floor(Math.random()*winner.length)];
   const r=TIPI[winner];
   document.getElementById('rEmoji').textContent=r.emoji;
   document.getElementById('rTitle').textContent=r.title;
@@ -380,18 +289,13 @@ function showResult(){
   document.getElementById('rArma').innerHTML=r.arma;
   document.getElementById('bar').style.width='100%';
 }
-
 function toggleBreakdown(btn){
   const panel=document.getElementById('breakdown');
   const open=!panel.classList.contains('hidden');
   panel.classList.toggle('hidden');
-  btn.textContent=open?'🔍 Vide quant\'è di ogni tipo in te ↓':'🔼 Nasconni \'a composizione';
-  if(!open && !panel.dataset.built){
-    buildBreakdown();
-    panel.dataset.built='1';
-  }
+  btn.textContent=open?"🔍 Vide quant'è di ogni tipo in te ↓":"🔼 Nasconni 'a composizione";
+  if(!open&&!panel.dataset.built){buildBreakdown();panel.dataset.built='1';}
 }
-
 function buildBreakdown(){
   const total=Object.values(punti).reduce((a,b)=>a+b,0);
   const panel=document.getElementById('breakdown');
@@ -400,21 +304,13 @@ function buildBreakdown(){
     const pct=total>0?Math.round(v/total*100):0;
     const t=TIPI[k];
     return `<div class="bk-row" onclick="openModal('${k}')">
-      <div class="bk-label">
-        <span class="bk-name">${t.emoji} ${t.title}</span>
-        <span class="bk-pct">${pct}%</span>
-      </div>
+      <div class="bk-label"><span class="bk-name">${t.emoji} ${t.title}</span><span class="bk-pct">${pct}%</span></div>
       <div class="bk-track"><div class="bk-fill" data-pct="${pct}"></div></div>
       <div class="bk-hint">toccame p' 'e dettagli 👆</div>
     </div>`;
   }).join('');
-  setTimeout(()=>{
-    panel.querySelectorAll('.bk-fill').forEach(el=>{
-      el.style.width=el.dataset.pct+'%';
-    });
-  },50);
+  setTimeout(()=>{panel.querySelectorAll('.bk-fill').forEach(el=>{el.style.width=el.dataset.pct+'%';});},50);
 }
-
 function openModal(k){
   const t=TIPI[k];
   document.getElementById('mEmoji').textContent=t.emoji;
@@ -425,7 +321,6 @@ function openModal(k){
   document.getElementById('mArma').innerHTML=t.arma;
   document.getElementById('modal').classList.remove('hidden');
 }
-
 function closeModal(e){
   if(e.target===document.getElementById('modal'))
     document.getElementById('modal').classList.add('hidden');
