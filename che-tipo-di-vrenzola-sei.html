@@ -385,7 +385,7 @@ function toggleBreakdown(btn){
   const panel=document.getElementById('breakdown');
   const open=!panel.classList.contains('hidden');
   panel.classList.toggle('hidden');
-  btn.textContent=open?'🔍 Vide quant\'è di ogni tipo in te ↓':'🔼 Nasconni 'a composizione';
+  btn.textContent=open?'🔍 Vide quant\'è di ogni tipo in te ↓':'🔼 Nasconni \'a composizione';
   if(!open && !panel.dataset.built){
     buildBreakdown();
     panel.dataset.built='1';
