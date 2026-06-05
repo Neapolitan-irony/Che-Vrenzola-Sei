@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Che tipo di vrenzola sei? 💅🔥</title>
+<style>
+  :root{
+    --rosa:#ff2e88;
+    --viola:#7b1fa2;
+    --giallo:#ffd400;
+    --ciano:#00e5ff;
+    --nero:#1a0022;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;font-family:'Trebuchet MS','Segoe UI',sans-serif;}
+  body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#ff2e88 0%,#7b1fa2 50%,#1a0022 100%);
+    background-attachment:fixed;
+    color:#fff;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding:24px 14px 60px;
+  }
+  .wrap{width:100%;max-width:620px;}
+  .card{
+    background:rgba(26,0,34,.78);
+    border:3px solid var(--giallo);
+    border-radius:22px;
+    padding:26px 22px;
+    box-shadow:0 0 40px rgba(255,46,136,.6);
+    backdrop-filter:blur(4px);
+  }
+  h1{
+    font-size:2.1rem;line-height:1.1;text-align:center;
+    text-shadow:0 0 14px var(--rosa);
+    background:linear-gradient(90deg,var(--giallo),var(--ciano),var(--rosa));
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .sub{text-align:center;margin:12px 0 4px;font-size:1.05rem;opacity:.95;}
+  .emoji{font-size:2.6rem;text-align:center;display:block;margin-bottom:6px;}
+  .btn{
+    display:block;width:100%;margin-top:22px;padding:16px;
+    font-size:1.15rem;font-weight:bold;cursor:pointer;
+    border:none;border-radius:14px;color:var(--nero);
+    background:linear-gradient(90deg,var(--giallo),var(--ciano));
+    text-transform:uppercase;letter-spacing:1px;
+    transition:transform .12s, box-shadow .12s;
+  }
+  .btn:hover{transform:scale(1.03);box-shadow:0 0 22px var(--ciano);}
+  .progress{height:14px;background:rgba(255,255,255,.15);border-radius:10px;overflow:hidden;margin-bottom:18px;border:1px solid var(--giallo);}
+  .progress>div{height:100%;width:0;background:linear-gradient(90deg,var(--rosa),var(--giallo));transition:width .3s;}
+  .qnum{font-size:.85rem;letter-spacing:2px;opacity:.8;text-transform:uppercase;margin-bottom:6px;}
+  .question{font-size:1.4rem;font-weight:bold;margin-bottom:18px;line-height:1.25;}
+  .opt{
+    display:block;width:100%;text-align:left;margin-bottom:12px;padding:14px 16px;
+    font-size:1.02rem;cursor:pointer;color:#fff;
+    background:rgba(255,255,255,.08);
+    border:2px solid rgba(255,212,0,.5);border-radius:14px;
+    transition:all .12s;
+  }
+  .opt:hover{background:var(--rosa);border-color:#fff;transform:translateX(4px);}
+  .result-emoji{font-size:5rem;text-align:center;display:block;}
+  .result-title{font-size:2rem;text-align:center;color:var(--giallo);margin:6px 0 14px;text-shadow:0 0 12px var(--rosa);}
+  .result-desc{font-size:1.08rem;line-height:1.5;margin-bottom:14px;}
+  .result-box{background:rgba(0,0,0,.3);border-left:4px solid var(--ciano);padding:12px 14px;border-radius:8px;margin-bottom:10px;font-size:.98rem;}
+  .result-box b{color:var(--ciano);}
+  .hidden{display:none;}
+  .footer{text-align:center;margin-top:18px;font-size:.8rem;opacity:.6;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+
+    <!-- INTRO -->
+    <div id="intro">
+      <span class="emoji">💅🔥👑</span>
+      <h1>CHE TIPO DI VRENZOLA SEI?</h1>
+      <p class="sub">8 domande. Zero pietà. La verità su di te sta per uscire allo scoperto, soreee. 💋</p>
+      <button class="btn" onclick="start()">INIZIAMO STO BORDELLO ➜</button>
+    </div>
+
+    <!-- QUIZ -->
+    <div id="quiz" class="hidden">
+      <div class="progress"><div id="bar"></div></div>
+      <div class="qnum" id="qnum"></div>
+      <div class="question" id="qtext"></div>
+      <div id="opts"></div>
+    </div>
+
+    <!-- RESULT -->
+    <div id="result" class="hidden">
+      <span class="result-emoji" id="rEmoji"></span>
+      <div class="result-title" id="rTitle"></div>
+      <div class="result-desc" id="rDesc"></div>
+      <div class="result-box" id="rHabitat"></div>
+      <div class="result-box" id="rFrase"></div>
+      <div class="result-box" id="rArma"></div>
+      <button class="btn" onclick="location.reload()">RIFALLO 🔁</button>
+    </div>
+
+    <div class="footer">Quiz demenziale per ridere — gli stereotipi sono affettuosi 💖</div>
+  </div>
+</div>
+
+<script>
+/* ===== I 6 TIPI ===== */
+const TIPI = {
+  classica:{
+    emoji:"🩴",
+    title:"LA VRENZOLA CLASSICA D.O.C.",
+    desc:"Tuta acetata, ciabatte col calzino, capelli tirati a uovo e telefono SEMPRE in mano a volume massimo in vivavoce. Sei l'originale, la matrice, il prototipo da cui tutte le altre hanno copiato. Pura, autentica, intramontabile.",
+    habitat:"<b>Habitat:</b> il balcone del rione, urlando ai figli che giocano in strada.",
+    frase:"<b>Frase tipica:</b> «Madò, ma stammo sempe a parlà? Ma fatte 'e fatte tuoje!»",
+    arma:"<b>Arma segreta:</b> la ciabatta tomahawk, precisione chirurgica a 15 metri."
+  },
+  tronista:{
+    emoji:"🤳",
+    title:"LA VRENZOLA INFLUENCER WANNABE",
+    desc:"Vivi per le storie, il filtro e il tuo migliore amico e hai piu ritocchini che follower veri. Labbra al silicone, ciglia da spazzolone e una posa col bacino studiata in ogni foto. La vita e un set, e tu sei la regina indiscussa del 'link in bio'.",
+    habitat:"<b>Habitat:</b> il bagno con la luce buona e lo specchio del centro commerciale.",
+    frase:"<b>Frase tipica:</b> «Uagliù, oggi so' struccata, acqua e sapone» (cu 4 chile 'e trucco).",
+    arma:"<b>Arma segreta:</b> il filtro che ti toglie 20 anni e 3 menti."
+  },
+  neomelodica:{
+    emoji:"🎤",
+    title:"LA VRENZOLA NEOMELODICA",
+    desc:"La tua vita e una canzone d'amore strappalacrime. Auto con i finestrini abbassati e l'autotune a palla, lacrime facili e drammi amorosi degni di una telenovela. Ami con tutto il cuore, soffri con tutto il fegato e canti con tutta la gola.",
+    habitat:"<b>Habitat:</b> matrimoni, comunioni e la macchina del fidanzato.",
+    frase:"<b>Frase tipica:</b> «Tu si' 'a vita mia... ma si me traisce, t'accido!»",
+    arma:"<b>Arma segreta:</b> la dedica a sorpresa che fa piangere tutto il quartiere."
+  },
+  imprenditrice:{
+    emoji:"💸",
+    title:"LA VRENZOLA IMPRENDITRICE",
+    desc:"Unghie da 4 cm ma le dita corrono sul telefono a vendere di tutto: ciglia, smalti semipermanenti, integratori detox e profumi 'tipo' quelli di marca. Sei una macchina da soldi col grembiule glitterato. Networking e il tuo secondo nome.",
+    habitat:"<b>Habitat:</b> il salone-garage di casa, trasformato in impero.",
+    frase:"<b>Frase tipica:</b> «Ammò, scríveme 'mprivato ca te faccio 'o prezzo, amì!»",
+    arma:"<b>Arma segreta:</b> il catalogo WhatsApp con 4.000 contatti e zero scrupoli."
+  },
+  regina:{
+    emoji:"👑",
+    title:"LA VRENZOLA REGINA DEL RIONE",
+    desc:"Comandi tu e basta. Conosci i fatti di tutti, controlli il quartiere meglio delle telecamere e nessuno fa un matrimonio senza il tuo permesso. Mamma chioccia coi tuoi, generalessa con gli estranei. La parola 'no' detta a te non esiste.",
+    habitat:"<b>Habitat:</b> la sedia davanti al portone, trono ufficiale.",
+    frase:"<b>Frase tipica:</b> «Cca dinto nun se move 'na foglia ca i' nun voglio.»",
+    arma:"<b>Arma segreta:</b> la rete di comari, informazione capillare 24/7."
+  },
+  antonella:{
+    emoji:"🎓",
+    title:"L'ANTONELLA — LA VRENZOLA NEGAZIONISTA",
+    desc:"Laurea in Medicina (o Ingegneria, o Architettura) presa col massimo dei voti, vieni dalla provincia e fai di TUTTO per non sembrare vrenzola: spritz invece di birra, tote bag al posto della borsa firmata, podcast di crescita personale e «io non sono come le altre». Ma basta un nervoso e ritorna l'accento d' 'o paese, la ciabatta spirituale e il «ma tu nun saje chi songo io». Vrenzola coi titoli di studio... ma sempe vrenzola resta.",
+    habitat:"<b>Habitat:</b> l'aperitivo 'di qualità' in centro, a ricordare a tutti che lei è dottoressa.",
+    frase:"<b>Frase tipica:</b> «Io ci ho la laurea eh, mica sono vrenzola... però chella se l'è proprio cercata.»",
+    arma:"<b>Arma segreta:</b> il titolo di studio sventolato in faccia e l'accento d' 'o paese che torna quando s'arrabbia."
+  },
+  tamarra:{
+    emoji:"💎",
+    title:"LA VRENZOLA TAMARRA DELUXE",
+    desc:"Oro al collo a chili, borsa 'firmata' (al mercato), animalier dalla testa ai piedi e occhiali da sole anche di notte. Piu e esagerato, piu e bello. Non passi inosservata: ENTRI in una stanza e parte l'eclissi. Glitter, leopardo e zero filtri nella vita reale.",
+    habitat:"<b>Habitat:</b> la discoteca sul lungomare, tavolo riservato.",
+    frase:"<b>Frase tipica:</b> «Chesta è Gucci overo eh, me l'ha ditto chillo r' 'o banco.»",
+    arma:"<b>Arma segreta:</b> l'outfit total animalier visibile dallo spazio."
+  }
+};
+
+/* ===== LE DOMANDE =====
+   ogni opzione assegna un punto a un tipo */
+const DOMANDE = [
+  {q:"Squilla il telefono in mezzo alla strada. Come rispondi?",
+   a:[
+     {t:"In vivavoce a tutto volume, che sappiano i fatti miei",k:"classica"},
+     {t:"Solo dopo aver controllato come sto in camera frontale",k:"tronista"},
+     {t:"«Pronto ammóre» cu 'a voce 'e canzone",k:"neomelodica"},
+     {t:"«Rimme ca sto faticann, te manno 'o catalogo»",k:"imprenditrice"},
+     {t:"«Chi è? Eh i' 'o saccio già tutto, parla»",k:"regina"},
+     {t:"Sottovoce, sospirando: «che imbarazzo la gente che parla forte»",k:"antonella"}
+   ]},
+  {q:"Outfit per andare a comprare il pane:",
+   a:[
+     {t:"Tuta acetata e ciabatte, un classico",k:"classica"},
+     {t:"Tacco 12 e trucco completo, non si sa mai",k:"tronista"},
+     {t:"Animalier dalla testa ai piedi e oro a chili",k:"tamarra"},
+     {t:"Pigiama, tanto comando io e nessuno dice niente",k:"regina"},
+     {t:"Quello che vendo, cosi faccio pubblicita",k:"imprenditrice"},
+     {t:"Total beige minimal e tote bag: «io non mi vesto appariscente»",k:"antonella"}
+   ]},
+  {q:"La tua canzone dell'anima e:",
+   a:[
+     {t:"Una neomelodica strappalacrime sull'amore",k:"neomelodica"},
+     {t:"Un trap tamarro a palla in macchina",k:"tamarra"},
+     {t:"Qualunque cosa, basta che la sentano i vicini",k:"classica"},
+     {t:"L'audio della story col mio balletto",k:"tronista"},
+     {t:"Il jingle del mio negozietto online",k:"imprenditrice"},
+     {t:"Un podcast di crescita personale: «io non ascolto quella roba»",k:"antonella"}
+   ]},
+  {q:"Qualcuno parla male di te. Reazione?",
+   a:[
+     {t:"Ciabatta tomahawk e si chiude il discorso",k:"classica"},
+     {t:"Story polemica con musica triste e occhiali da sole",k:"tronista"},
+     {t:"Pianto, dramma e canzone dedicata",k:"neomelodica"},
+     {t:"Lo so gia da prima di lei, ho le mie fonti",k:"regina"},
+     {t:"Lo blocco e gli tolgo lo sconto fedelta",k:"imprenditrice"},
+     {t:"«Io non mi abbasso al loro livello»... poi torna l'accento d' 'o paese",k:"antonella"}
+   ]},
+  {q:"Il tuo accessorio irrinunciabile:",
+   a:[
+     {t:"Occhiali da sole leopardati anche di notte",k:"tamarra"},
+     {t:"Le ciglia finte XXL",k:"tronista"},
+     {t:"Le ciabatte da combattimento",k:"classica"},
+     {t:"Il rosario d'oro della nonna",k:"neomelodica"},
+     {t:"Il telefono con 3 power bank per vendere",k:"imprenditrice"},
+     {t:"Gli occhiali da vista finti, per sembrare intellettuale",k:"antonella"}
+   ]},
+  {q:"Come passi il sabato sera ideale?",
+   a:[
+     {t:"Discoteca sul lungomare, tavolo e bottiglie",k:"tamarra"},
+     {t:"A fare contenuti per i social",k:"tronista"},
+     {t:"A casa a controllare i fatti di tutto il palazzo",k:"regina"},
+     {t:"Karaoke neomelodico fino alle 4",k:"neomelodica"},
+     {t:"Sul balcone con la comare a spettegolare",k:"classica"},
+     {t:"Aperitivo 'di qualità' a spiegare che lei è diversa dalle altre",k:"antonella"}
+   ]},
+  {q:"Il tuo sogno nel cassetto:",
+   a:[
+     {t:"Diventare famosa sui social, taggata da tutti",k:"tronista"},
+     {t:"Aprire la mia catena di centri estetici",k:"imprenditrice"},
+     {t:"Incidere un disco d'amore",k:"neomelodica"},
+     {t:"Essere riconosciuta regina assoluta del quartiere",k:"regina"},
+     {t:"La borsa firmata VERA, finalmente",k:"tamarra"},
+     {t:"Trasferirmi a Milano e scordare 'o paese (ma torno ogni weekend)",k:"antonella"}
+   ]},
+  {q:"Frase che diresti a tavola dai parenti:",
+   a:[
+     {t:"«Magnate, ca si no v'affennite!» (alluccanno)",k:"regina"},
+     {t:"«Aspettate ca faccio 'a foto r' 'o piatto p' 'a story»",k:"tronista"},
+     {t:"«Stu servizio 'e piatte è firmato eh»",k:"tamarra"},
+     {t:"«Vulite pruvà l'integratore detox mio?»",k:"imprenditrice"},
+     {t:"«Stu sugo è 'a fine r' 'o munno» cu 'a lacrimella",k:"neomelodica"},
+     {t:"«Voi non capite, in città mica si fa così» (con la puzza sotto al naso)",k:"antonella"}
+   ]}
+];
+
+let idx=0;
+const punti={classica:0,tronista:0,neomelodica:0,imprenditrice:0,regina:0,tamarra:0,antonella:0};
+
+function start(){
+  document.getElementById('intro').classList.add('hidden');
+  document.getElementById('quiz').classList.remove('hidden');
+  render();
+}
+
+function shuffle(arr){
+  const copy=[...arr];
+  for(let i=copy.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [copy[i],copy[j]]=[copy[j],copy[i]];
+  }
+  return copy;
+}
+
+function render(){
+  const d=DOMANDE[idx];
+  document.getElementById('bar').style.width=((idx)/DOMANDE.length*100)+'%';
+  document.getElementById('qnum').textContent="Domanda "+(idx+1)+" di "+DOMANDE.length;
+  document.getElementById('qtext').textContent=d.q;
+  const box=document.getElementById('opts');
+  box.innerHTML='';
+  const opzioni=shuffle(d.a);
+  opzioni.forEach(o=>{
+    const b=document.createElement('button');
+    b.className='opt';
+    b.textContent=o.t;
+    b.onclick=()=>pick(o.k);
+    box.appendChild(b);
+  });
+}
+
+function pick(k){
+  punti[k]++;
+  idx++;
+  if(idx<DOMANDE.length){ render(); }
+  else{ showResult(); }
+}
+
+function showResult(){
+  document.getElementById('quiz').classList.add('hidden');
+  document.getElementById('result').classList.remove('hidden');
+  let max=Math.max(...Object.values(punti));
+  let vincitori=Object.keys(punti).filter(k=>punti[k]===max);
+  let winner=vincitori[Math.floor(Math.random()*vincitori.length)];
+  const r=TIPI[winner];
+  document.getElementById('rEmoji').textContent=r.emoji;
+  document.getElementById('rTitle').textContent=r.title;
+  document.getElementById('rDesc').textContent=r.desc;
+  document.getElementById('rHabitat').innerHTML=r.habitat;
+  document.getElementById('rFrase').innerHTML=r.frase;
+  document.getElementById('rArma').innerHTML=r.arma;
+  document.getElementById('bar').style.width='100%';
+}
+</script>
+</body>
+</html>
